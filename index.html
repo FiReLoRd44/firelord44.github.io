@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale = 1">
+    <title>Siddha Mehta</title>
+    <link rel="stylesheet" text="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/cecd160009.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/png" href="hacker.png">
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Lato:300,400|Poppins:300,400,800&display=swap");
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            width: 100%;
+            height: 100vh;
+            background: #232323;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container .box {
+            width: 250px;
+            height: 250px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .container .box .title {
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 50px;
+        }
+        
+        .container .box .title .block {
+            width: 0%;
+            height: inherit;
+            background: #ffb510;
+            position: absolute;
+            animation: mainBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+            display: flex;
+        }
+        
+        .container .box .title h1 {
+            font-family: "Poppins";
+            color: #fff;
+            font-size: 32px;
+            -webkit-animation: mainFadeIn 2s forwards;
+            -o-animation: mainFadeIn 2s forwards;
+            animation: mainFadeIn 2s forwards;
+            animation-delay: 1.6s;
+            opacity: 0;
+            display: flex;
+            align-items: baseline;
+            position: relative;
+        }
+        
+        .container .box .title h1 span {
+            width: 0px;
+            height: 0px;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            border-radius: 50%;
+            background: #ffb510;
+            -webkit-animation: load 0.6s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+            animation: popIn 0.8s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+            animation-delay: 2s;
+            margin-left: 5px;
+            margin-top: -10px;
+            position: absolute;
+            bottom: 13px;
+            right: -12px;
+        }
+        
+        .container .box .role {
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 45px;
+            margin-top: -4px;
+        }
+        
+        .container .box .role .block {
+            width: 0%;
+            height: inherit;
+            background: #e91e63;
+            position: absolute;
+            animation: secBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+            animation-delay: 2s;
+            display: flex;
+        }
+        
+        .container .box .role p {
+            animation: secFadeIn 2s forwards;
+            animation-delay: 3.2s;
+            opacity: 0;
+            font-weight: 400;
+            font-family: "Lato";
+            color: #ffffff;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+        
+        @keyframes mainBlock {
+            0% {
+                width: 0%;
+                left: 0;
+            }
+            50% {
+                width: 100%;
+                left: 0;
+            }
+            100% {
+                width: 0;
+                left: 100%;
+            }
+        }
+        
+        @keyframes secBlock {
+            0% {
+                width: 0%;
+                left: 0;
+            }
+            50% {
+                width: 100%;
+                left: 0;
+            }
+            100% {
+                width: 0;
+                left: 100%;
+            }
+        }
+        
+        @keyframes mainFadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes popIn {
+            0% {
+                width: 0px;
+                height: 0px;
+                background: #e9d856;
+                border: 0px solid #ddd;
+                opacity: 0;
+            }
+            50% {
+                width: 10px;
+                height: 10px;
+                background: #e9d856;
+                opacity: 1;
+                bottom: 45px;
+            }
+            65% {
+                width: 7px;
+                height: 7px;
+                bottom: 0px;
+                width: 15px;
+            }
+            80% {
+                width: 10px;
+                height: 10px;
+                bottom: 20px;
+            }
+            100% {
+                width: 7px;
+                height: 7px;
+                background: #e9d856;
+                border: 0px solid #222;
+                bottom: 13px;
+            }
+        }
+        
+        @keyframes secFadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0.5;
+            }
+        }
+        
+        @keyframes top {
+            0% {
+                opacity: 0;
+                bottom: -80px;
+            }
+            100% {
+                opacity: 1;
+                bottom: 0px;
+            }
+        }
+        
+        @keyframes icon {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.3) rotate(-2deg);
+            }
+            100% {
+                opacity: 1;
+                bottom: 0px;
+            }
+        }
+    </style>
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+</head>
+
+<body translate="no">
+    <div itemscope itemtype="http://schema.org/Person">
+        <div class="container">
+            <div class="box">
+
+                <div class="title">
+                    <span class="block"></span>
+                    <meta itemprop="honorificPrefix" content="Mr" />
+                    <h1 itemprop="name">Siddha Mehta<span></span></h1>
+                    <meta itemprop="givenName" content="Siddha" />
+                    <meta itemprop="familyName" content="Mehta" />
+                </div>
+
+                <div class="role">
+                    <div class="block"></div>
+                    <p itemprop="jobTitle">Cybersecurity Grad Student</p>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div id="btext">
+            <div class="alignmentmain" style="margin-top:30px; margin-right:10%;margin-left: 10%;">
+                <p itemprop="description"> Hi! My name is Siddha Mehta. I am a grad student at
+                    <meta itemprop="affiliation" content="University of Washington" />University of Washington. I have completed my undergrad in Computer Science and Engineering with honors in Security and Privacy from
+                    <meta itemprop="alumniOf" content="Symbiosis Institute of Technology, Pune" /> Symbiosis Institute of Technology. I have previous experience of working as a security engineer. 
+                    I am good at
+                    <meta itemprop="knowsAbout" content="Networking, Cybersecurity, Web Development and Software Development" /> Networking, Cybersecurity, Internet of Things. 
+                    I have completed the
+                    <meta itemprop="hasCredential" content="CEHv10 Certificate" /> certified ethical hacker exam v10. You can find my resume <a href=resume.pdf> here </a>.
+
+                </p>
+            </div>
+            <!-- <div class="alignmentmain">
+                <img class="gif1" itemprop="image" src="hi.gif" height="300px" width="300px">
+            </div> -->
+            <div class="contact">
+                <a itemprop="sameAs" href="https://www.linkedin.com/in/siddha-mehta"><i class="fab fa-linkedin"></i></a>
+                <a itemprop="url" href="https://www.github.com/FiReLoRd44"><i class="fab fa-github"></i></a>
+                
+                <meta itemprop="telephone" content="+14256673122" /><a href="tel:+14256673122"><i class="fas fa-phone"></i></a>
+                <a itemprop="email" href="mailto:mehtasiddha@gmail.com"><i class="fas fa-envelope"></i></a>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

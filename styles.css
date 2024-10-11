@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #232323;
+}
+
+#btext {
+    font-family: 'Montserrat', Georgia, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    color: white;
+    padding-left: 20px;
+    line-height: 40px;
+}
+
+.alignmentmain {
+    text-align: center;
+}
+
+.contact {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 3em;
+}
+
+.gif1 {
+    height: 25em;
+    width: 25em;
+    border-radius: 20%;
+}
+
+a {
+    color: rgb(163, 159, 159);
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+}
+
+a:active {
+    color: white;
+}
+
+a:hover {
+    color: white;
+}
