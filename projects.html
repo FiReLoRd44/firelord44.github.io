@@ -72,7 +72,6 @@
             flex-direction: column;
         }
         
-        /* Hide scrollbar for a cleaner terminal look, but keep it scrollable */
         .terminal-content::-webkit-scrollbar {
             width: 8px;
         }
@@ -96,71 +95,55 @@
             vertical-align: middle;
             margin-left: 5px;
         }
+
+        strong {
+            color: #00ff41; /* Techy Green */
+        }
+        
+        em {
+            color: #fff;
+            font-style: normal;
+            font-size: 0.9em;
+            background: rgba(225, 29, 72, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
         
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
-        }
-
-        #btext {
-            min-height: 40vh; /* Ensure there is room to scroll to */
-            padding-bottom: 50px;
-        }
-
-        
-        @keyframes icon {
-            0% {
-                opacity: 0;
-                transform: scale(0);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.3) rotate(-2deg);
-            }
-            100% {
-                opacity: 1;
-                bottom: 0px;
-            }
         }
     </style>
     <script>
         if (document.location.search.match(/type=embed/gi)) {
             window.parent.postMessage("resize", "*");
         }
-        
+
         document.addEventListener("DOMContentLoaded", () => {
             function getRandomIp() {
                 return `${Math.floor(Math.random() * 254) + 1}.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 256)}.${Math.floor(Math.random() * 254) + 1}`;
             }
-            
-            const localIp = getRandomIp();
-            const targetIp = getRandomIp();
-            const sourcePort = Math.floor(Math.random() * (65535 - 1024 + 1)) + 1024;
-            
-            // Update terminal header dynamically
-            document.getElementById("target-ip").innerText = targetIp;
+
+            const serverIp = getRandomIp();
+            document.getElementById("server-ip").innerText = serverIp;
 
             const sequence = [
-                { text: "firelord@local:~$ nc -lvnp 1337", delay: 600, type: "input" },
-                { text: "listening on [any] 1337 ...", delay: 800, type: "output" },
-                { text: `connect to [${localIp}] from (UNKNOWN) [${targetIp}] ${sourcePort}`, delay: 600, type: "output" },
-                { text: "bash: no job control in this shell", delay: 300, type: "output" },
-                { text: "root@target:~# whoami", delay: 500, type: "input" },
-                { text: "Siddha Mehta - Security Engineer", delay: 600, type: "output", glow: true },
-                { text: "root@target:~# cat ./bio.txt", delay: 500, type: "input" },
-                { text: "I am a Security Engineer at Amazon and a recent graduate from the University of Washington Bothell. Specializing in the intersection of DevOps and automation, my work focuses on scaling security assessments through tool-driven frameworks. When not defending infrastructure, I am often found competing in CTFs, building homelabs, or exploring how AI can be weaponized and subsequently defended in modern security testing.", delay: 800, type: "output" },
-                { text: "root@target:~# cat ./volunteer-work.txt", delay: 500, type: "input" },
-                { text: "Community Contributions & Giving Back:<br>- I actively help the cybersec community by creating CTF challenges and learning materials.<br>- Volunteer CTF challenge creator for the Red Team Association and <a href='https://grayhats.club/' target='_blank' style='color:#00ff41;'>GrayHats</a>.", delay: 800, type: "output" },
-                { text: "root@target:~# cat ./achievements.txt", delay: 500, type: "input" },
-                { text: "Recent Achievements & Leadership:<br>• Team Captain of 2nd place PRCCDC winner<br>• Vice President of <a href='https://grayhats.club/' target='_blank' style='color:#00ff41;'>GrayHats Cybersecurity Club</a>", delay: 800, type: "output" },
-                { text: "root@target:~# ls -la ./links", delay: 500, type: "input" },
-                { text: "drwxr-xr-x 2 root root 4096 Apr 1 13:37 .<br>-rwxrwxrwx 1 root root  12K Apr 1 13:37 <a href='resume.pdf' target='_blank' style='color:#00ff41;'>resume.pdf</a><br>-rwxrwxrwx 1 root root  18K Apr 1 13:37 <a href='projects.html' style='color:#00ff41;'>projects.html</a>", delay: 800, type: "output" },
-                { text: "root@target:~# cat ./contacts.txt", delay: 500, type: "input" },
-                { text: "Socials & Direct Lines:<br><br>" +
+                { text: `firelord@local:~$ ssh guest@projects.siddha.me`, delay: 500, type: "input" },
+                { text: "guest@projects.siddha.me's password: ", delay: 800, type: "input", hidden: true },
+                { text: "Access granted. Welcome to the Projects Matrix.", delay: 500, type: "output" },
+                { text: "guest@projects:~# ./load_projects.sh", delay: 500, type: "input" },
+                { text: "Fetching module data...<br><br>" + 
+                  "<span style='color:#00ff41;'>[+] Project Nexus</span> | <em>Coming Soon</em><br>A sneak peek - Nexus is an open-source framework that seeks to change the amount of time and level of effort required for exhaustive BLE security testing. Nexus dynamically fingerprints devices while mapping GATT profiles to known attack vectors. To achieve this, it uses an AI planner to execute context-aware fuzzing campaigns that adapt in real-time to over-the-air indicators.<br><br>" +
+                  "<span style='color:#00ff41;'>[+] Smart Street Light System</span> | <em>IoT, ThingSpeak, Arduino</em><br>Led a group of 3 to design an energy-efficient street light system using LoRa communication. Developed code to sync statuses to Firebase.<br><br>" +
+                  "<span style='color:#00ff41;'>[+] Smart Irrigation System</span> | <em>IoT, Machine Learning, Python</em><br>Led a group of 3 to design an algorithm aiming to minimize water wastage. Optimized algorithm to run on Raspberry Pi 3B+ (71% accuracy).<br><br>" +
+                  "<span style='color:#00ff41;'>[+] Call Detail Record and IPDR Analysis</span> | <em>Machine Learning, Big Data, Python</em><br>Developed Python programs to create a pseudo dataset & generated interactive graphs forming an anomaly prediction algorithm for CDR/IPDR.<br><br>" },
+                { text: "guest@projects:~# cat contacts.txt", delay: 500, type: "input" },
+                { text: "<br>You can reach me securely at:<br><br>" +
                   "&nbsp;&nbsp;[<i class='fab fa-linkedin' style='color:#aaaaaa;'></i>] <a href='https://www.linkedin.com/in/siddha-mehta' target='_blank' style='color:#00ff41;'>LinkedIn</a><br>" + 
                   "&nbsp;&nbsp;[<i class='fab fa-github' style='color:#aaaaaa;'></i>] <a href='https://www.github.com/FiReLoRd44' target='_blank' style='color:#00ff41;'>GitHub</a><br>" + 
-                  "&nbsp;&nbsp;[<i class='fas fa-envelope' style='color:#aaaaaa;'></i>] <a href='mailto:mehtasiddha@gmail.com' style='color:#00ff41;'>mehtasiddha@gmail.com</a><br>", delay: 800, type: "output" },
-                { text: "root@target:~# ", delay: 500, type: "input_cursor" }
+                  "&nbsp;&nbsp;[<i class='fas fa-envelope' style='color:#aaaaaa;'></i>] <a href='mailto:mehtasiddha@gmail.com' style='color:#00ff41;'>mehtasiddha@gmail.com</a><br><br>" +
+                  "&nbsp;&nbsp;[<i class='fas fa-home' style='color:#aaaaaa;'></i>] <a href='index.html' style='color:#e11d48;'>cd /home/siddha</a>", delay: 800, type: "output" },
+                { text: "guest@projects:~# ", delay: 500, type: "input_cursor" }
             ];
 
             const termContent = document.getElementById("term-content");
@@ -172,7 +155,6 @@
 
                 const lineData = sequence[seqIndex];
                 
-                // If it's just the final prompt
                 if (lineData.type === "input_cursor") {
                     const inlinePrompt = document.createElement("span");
                     inlinePrompt.innerHTML = lineData.text;
@@ -183,11 +165,6 @@
                 
                 const lineDiv = document.createElement("div");
                 lineDiv.className = "terminal-line";
-                if (lineData.glow) {
-                    lineDiv.style.textShadow = "0 0 10px rgba(225,29,72,0.8)";
-                    lineDiv.style.color = "#fff";
-                }
-                
                 termContent.insertBefore(lineDiv, cursor.parentNode);
                 termContent.scrollTop = termContent.scrollHeight;
 
@@ -195,7 +172,8 @@
                     let charIndex = 0;
                     lineDiv.textContent = "";
                     const typeInterval = setInterval(() => {
-                        lineDiv.textContent += lineData.text[charIndex];
+                        const nextChar = lineData.text[charIndex];
+                        lineDiv.textContent += (lineData.hidden && charIndex > 38) ? "*" : nextChar;
                         charIndex++;
                         if (charIndex >= lineData.text.length) {
                             clearInterval(typeInterval);
@@ -203,7 +181,7 @@
                             termContent.scrollTop = termContent.scrollHeight;
                             setTimeout(runSequence, lineData.delay);
                         }
-                    }, 35); // typing speed
+                    }, 35);
                 } else {
                     lineDiv.innerHTML = lineData.text;
                     seqIndex++;
@@ -221,8 +199,8 @@
         <div class="terminal-wrapper">
             <div class="terminal-window">
                 <div class="terminal-header">
-                    <span>root@target:~</span>
-                    <span id="target-ip"></span>
+                    <span>guest@projects:~</span>
+                    <span id="server-ip"></span>
                 </div>
                 <div class="terminal-content" id="term-content">
                     <div><span class="terminal-cursor" id="term-cursor"></span></div>
